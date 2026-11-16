@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
 
-const BACKEND_URL = process.env.BACKEND_API_URL || 'http://localhost:5000/api';
+const BACKEND_URL = (process.env.BACKEND_API_URL || 'http://localhost:5000/api').replace(/\/+$/, '');
 
 async function handleProxy(request: NextRequest, { params }: { params: { path: string[] } }) {
   const targetPath = (params.path || []).join('/');
